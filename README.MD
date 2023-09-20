@@ -8,3 +8,5 @@ En este tema vamos a instalar las principales aplicaciones con las que vamos a t
 - **Git** para el control de versiones y la colaboración en equipo.
 - **Docker** 
 - **VirtualBox**
+
+---
