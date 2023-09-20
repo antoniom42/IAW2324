@@ -3,4 +3,4 @@
 
 En este tema vamos a instalar las principales aplicaciones con las que vamos a trabajar este curso:
 - [Visual Studio Code] como editor principal
-- [Git] para el control de versiones y la colaboración en equipO
+- [Git] para el control de versiones y la colaboración en equipo.
