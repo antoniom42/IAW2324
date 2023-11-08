@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        label {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Validación formulario</h1>
+
+    <p>Nombre:</p><input type="text" id="nombre"><label id="mnombre"></label>
+    <p>Apellido:</p><input type="text" id="apellido"><label id="mapellido"></label>
+    <p>Correo electrónico:</p><input type="text" id="email"><label id="memail"></label>
+    <br><br><button onclick="validar()">Enviar</button>
+<script>
+    function validar() {
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+
+        if (nombre=="") {
+            document.getElementById("mnombre").innerHTML = " Este campo obligatorio";
+        }
+        
+        if (apellido=="") {
+            document.getElementById("mapellido").innerHTML = " Este campo obligatorio";
+        }
+
+        if (email=="") {
+            document.getElementById("memail").innerHTML = " Este campo obligatorio";
+        }else if (a){
+            document.getElementById("memail").innerHTML = "";
+        }
+    }
+</script>
+</body>
+</html>
