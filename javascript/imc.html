@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula tu IMC</title>
+</head>
+<body>
+    <h1>Calcula tu Índice de Masa Corporal</h1>
+    <h3>Introduce tu altura</h3>
+    <input type="text" placeholder="En cm" id="altura">
+    <br>
+    <h3>Introduce tu peso</h3>
+    <input type="text" placeholder="En kg" id="peso">
+    <br><br>
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+
+<script>
+    function calcular() {
+        var altura = document.getElementById("altura").value;
+        var peso = document.getElementById("peso").value;
+        var imc = (peso / (altura * altura)) * 10000;
+
+        if (altura=="" || peso=="") {
+            document.getElementById("resultado").innerHTML= "Por favor, rellena los campos necesarios";
+        } else if(isNaN(altura) || isNaN(peso) || altura<=0 || peso<=0) {
+            document.getElementById("resultado").innerHTML= "Por favor, introduce un valor numérico válido";
+        } else if (imc <= 18.5) {
+            document.getElementById("resultado").innerHTML= "Tu IMC es de " + imc.toFixed(2) + ". Estas en un peso inferior al normal";
+        } else if (imc > 18.5 & imc <= 24.9) {
+            document.getElementById("resultado").innerHTML= "Tu IMC es de " + imc.toFixed(2) + ". Estas en un peso normal";
+        } else if (imc > 24.9 & imc <= 29.9) {
+            document.getElementById("resultado").innerHTML="Tu IMC es de " + imc.toFixed(2) + ". Estas en un peso superior al normal";
+        } else if (imc >= 30) {
+            document.getElementById("resultado").innerHTML="Tu IMC es de " + imc.toFixed(2) + ". Eres obeso";
+        }
+    }
+</script>
+</body>
+</html>
