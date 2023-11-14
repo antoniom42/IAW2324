@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el número</title>
+</head>
+<body>
+    <h1>Intenta adivinar el número entre 0 y 5</h1>
+    <input type="text" id="num" placeholder="0 a 5">
+    <button onclick="adivinar()">Adivinar</button>
+    <p id="demo"></p>
+    
+<script>
+    var aleatorio = Math.trunc(Math.random()*6);
+    
+    function adivinar(){
+        var num = document.getElementById("num").value;
+        if (isNaN(num)) {
+            document.getElementById("demo").innerHTML="Eso no es un número, pillín";
+        }
+        else if (num<0 || num>5) {
+            document.getElementById("demo").innerHTML="Ese número no entra en el rango";
+        } else if (num!=aleatorio) {
+            document.getElementById("demo").innerHTML="El número es incorrecto. Sigue probando"
+        } else {
+            document.getElementById("demo").innerHTML="¡Correcto! Has acertado";
+        }
+    }
+</script>
+</body>
+</html>
