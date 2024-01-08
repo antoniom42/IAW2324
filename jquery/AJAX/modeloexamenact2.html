@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+</head>
+<body>
+    <h1>Introduce una ciudad para saber que tiempo hace</h1>
+    <input type="text" id="ciudad">
+    <button id="tiempo">Consultar</button>
+    <p id="demo"></p>
+</body>
+<script>
+    
+
+  /*  $(document).ready(function(){
+
+        $('#tiempo').click(function(){
+            let api = "43d2675f11bd9d77e04f13e28278721b";
+            let enlace = "https://api.openweathermap.org/data/2.5/weather?q=";
+            let ciudad = $("#ciudad").val();
+            let url = enlace+ciudad+"&appid="+api;
+
+            $.ajax({
+                url: url,
+                success: function (data){
+                $('#resultado').html(
+                    "<p>Ciudad: "+ data.name
+                );
+                }
+            }).fail(function(){
+                $("#error").text("Parece que no existe este municipio...")
+            })
+        }
+        )})*/
+        $('button').click(function(){
+            let api = "43d2675f11bd9d77e04f13e28278721b";
+            let enlace = "https://api.openweathermap.org/data/2.5/weather?q=";
+            let ciudad = $("#ciudad").val();
+            let url = enlace+ciudad+"&appid="+api;
+        
+
+        $.get(url).done(function(r){
+          console.log(r);
+          $('#demo').text('Ciudad: ' + e.name);
+
+          }).fail(function () {
+          $('#objetivo').text('Ha ocurrido un problema');
+          })
+
+        })
+
+</script> 
+</html>
