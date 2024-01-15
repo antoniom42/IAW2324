@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <h2>Escribe un mensaje de texto que se imprimirá por pantalla</h2>
+    <input type="text" id="mensaje"> <button onclick="publicar()">Publicar</button><br><br>
+    <button onclick="borrarle()">Borrar mensajes</button>
+
+    <p id="parrafo"></p>
+
+<script>
+    let msg =[]
+    let fecha = new Date()
+    var fechabien = fecha.toLocaleString();
+
+    function publicar() {
+        let mensaje = document.getElementById("mensaje").value;
+        msg.push(mensaje);
+        document.getElementById("parrafo").innerHTML="";
+        for(var i=0; i<msg.length; i++) {
+            document.getElementById("parrafo").innerHTML+='<p>'+msg[i]+'</p> '+fechabien+' <button onclick="borrar()"><img style="width: 20px" src="images/papelera-de-reciclaje.png" alt=""></button>' 
+        }
+    }
+</script>
+</body>
+</html>

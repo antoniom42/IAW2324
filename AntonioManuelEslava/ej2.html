@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <h2>Introduce las coordenadas para obtener información sobre la calidad del aire</h2>
+    <label for="lat">Latitud</label> <input type="text" id="lat"><br><br>
+    <label for="lon">Longitud</label> <input type="text" id="lon"><br><br>
+    <button id="enviar">Consultar</button>
+    <div id="demo"></div>
+
+<script>
+    $(document).ready(function () { //jqdocready
+        
+        $('#enviar').click(function(){ //jqclick
+
+            let api = "43d2675f11bd9d77e04f13e28278721b";
+            let lat = $("#lat").val(); //jqval
+            let lon = $("#lon").val();
+
+            $.ajax({ //jqajax
+                url: `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api}`,
+                success: function (e) {
+                    var calidad = e.list[0].main.aqi;
+                    var mostrar = "";
+
+                    switch (calidad) {
+                        case 1:
+                            mostrar="Bueno";
+                            break;
+                        case 2:
+                            mostrar="Aceptable";
+                            break;
+                        case 3:
+                            mostrar="Moderado";
+                            break;
+                        case 4:
+                            mostrar="Malo";
+                            break;
+                        case 5:
+                            mostrar="Muy malo";
+                            break;
+                        };
+
+                    $("#demo").html( //jqhtml
+                    `<p>Calidad: ${mostrar}</p>
+                    <p>Cantidad de monóxido de carbono(ug/m3): ${e.list[0].components.co}</p>`);
+                }, //,
+                error: function() {
+                    $("#demo").html(
+                    `<p>Los parámetros introducidos no son válidos</p>`);
+                }
+            });
+        });
+    });    
+</script>
+</body>
+</html>

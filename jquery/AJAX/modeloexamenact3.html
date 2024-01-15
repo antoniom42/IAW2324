@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Weather</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <h2>Introduce una ciudad para saber sus cositis</h2>
+    <input type="text" id="ciudad">
+    <button id="enviar">Consultar</button>
+    <div id="demo"></div>
+
+<script>
+    $(document).ready(function () { //jqdocready
+        
+        $('#enviar').click(function(){ //jqclick
+
+            let api = "43d2675f11bd9d77e04f13e28278721b";
+            let ciudad = $("#ciudad").val(); //jqval
+
+            $.ajax({ //jqajax
+                url: `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${api}&units=metric`,
+                success: function (e) {
+                    $("#demo").html( //jqhtml
+                    `<p>Ciudad: ${e.name}</p> 
+                     <p>Temperatura: ${e.main.temp}</p>`);
+                }, //,
+                error: function() {
+                    $("#demo").html(
+                    `<p>No funciona</p>`);
+                }
+            });
+        });
+    });    
+</script>
+</body>
+</html>
